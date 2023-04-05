@@ -9,8 +9,9 @@
 #' if input is an empty df, then return an empty df
 #'
 #' @export
-#' @examples
-#' summarize_column(mtcars, am, mpg)
+#'
+
+
 
 
 summarize_column <- function(data_frame, column) {
@@ -31,3 +32,5 @@ summarize_column <- function(data_frame, column) {
     )
   }
 }
+
+
