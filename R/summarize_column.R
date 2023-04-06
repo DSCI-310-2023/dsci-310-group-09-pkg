@@ -9,6 +9,8 @@
 #'
 #' #' @export
 #'
+
+
 summarize_column <- function(data_frame, column) {
   if(!is.data.frame(data_frame)){
     stop("input data_frame needs to be a data frame or extension")
