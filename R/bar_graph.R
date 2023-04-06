@@ -1,3 +1,25 @@
+# Bar Graph Plot
+
+#' Create a bar graph for a given variable
+#' 
+#' This function takes in a dataset, a variable x from the dataset, a variable y from the dataset, an x-axis label, a y-axis label, a fill label, and a title for the plot 
+#' 
+#' @param data The dataset that contains the x variable.
+#' @param x The name of the discrete variable that will be on the x-axis of the bar graph. 
+#' @param y The name of the numerical variable that will be on the y-axis of the bar graph.
+#' @param xlab The label of the x-axis.
+#' @param ylab The label of the y-xis.
+#' @param fill_lab The label of the fill variable.
+#' @param title The title of the bar graph.
+#' 
+#' @return A bar graph for given discrete variable, x, and numerical variable y
+#' 
+#' @examples 
+#' # bar_graph(iris, iris$Species, iris$Sepal.Width, "Species", "Sepal Width", "Species", "Iris Graph")
+#' 
+#'
+#'
+
 bar_graph <- function(df, x, y, xlab, ylab, fill_lab, title) {
 
   if(!is.data.frame(df)) {
