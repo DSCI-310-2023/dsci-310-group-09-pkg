@@ -28,4 +28,5 @@ This function takes in a dataset, a variable x from the dataset, an x-axis label
 }
 \examples{
 # hist_plot(mtcars, mpg, "Miles Per Gallon", "Count", "Histogram for MPG of Cars", 10)
+
 }

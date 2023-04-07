@@ -2,7 +2,7 @@
 % Please edit documentation in R/summarize_column.R
 \name{summarize_column}
 \alias{summarize_column}
-\title{Create a new data frame with 3 columns (mean, med, sd)}
+\title{Summarize columns of data}
 \usage{
 summarize_column(data_frame, column)
 }
@@ -14,9 +14,11 @@ summarize_column(data_frame, column)
 \value{
 A data frame with 3 columns (mean, med, sd). Given
 if input is an empty df, then return an empty df
-
-#' @export
 }
 \description{
 Create a new data frame with 3 columns (mean, med, sd)
+}
+\examples{
+summarize_column(mtcars, am, mpg)
+
 }
