@@ -2,5 +2,6 @@
 
 export(bar_graph)
 export(hist_plot)
+export(linearmodel)
 export(scatter_plot)
 export(summarize_column)

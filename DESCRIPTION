@@ -14,7 +14,9 @@ Imports:
     dplyr,
     tidyverse,
     ggplot2,
-    stats
+    stats,
+    workflows,
+    parsnip
 Suggests: 
     knitr,
     rmarkdown,
