@@ -22,10 +22,11 @@ Imports:
     parsnip,
     rsample,
     tune,
-    recipes
+    yardstick
 Suggests: 
     knitr,
     rmarkdown,
+    recipes,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 VignetteBuilder: 

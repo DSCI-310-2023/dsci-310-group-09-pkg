@@ -2,20 +2,22 @@
 % Please edit documentation in R/linearmodel.R
 \name{linearmodel}
 \alias{linearmodel}
-\title{Linear Regression Model
-Create a linear regression model}
+\title{Linear Regression Model}
 \usage{
 linearmodel(recipe, data)
 }
 \arguments{
-\item{recipe}{The recipe for the model.}
+\item{recipe}{The recipe for the model}
 
-\item{data}{The dataset for the model.}
+\item{data}{The dataset for the model}
 }
 \value{
 A list that includes the intercept and coefficients for the linear model.
 }
 \description{
+Create a linear regression model
+}
+\details{
 This function takes in a recipe and a data frame.
 }
 \examples{
