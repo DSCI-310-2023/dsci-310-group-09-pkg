@@ -4,6 +4,7 @@ Version: 0.0.0.9000
 Authors@R: 
     person("Vera", "Danilova", , "veradanilova765@gmail.com", role = c("aut", "cre"))
     person("Yuyang", "Wang", , "franktcsn@gmail.com", role = c("aut", "cre"))
+    person("Jenna", "Le Noble", , "jenna_lenoble@hotmail.com", role = c("aut", "cre"))
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
 Encoding: UTF-8
@@ -12,3 +13,6 @@ RoxygenNote: 7.2.3
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
+Imports: 
+    ggplot2,
+    dplyr
