@@ -12,7 +12,7 @@
 #' minimal mean absolute error, minimal mean squared error, best kernel and best k.
 #'
 #' @examples
-#' knn_model(recipe(Sepal.Length ~ Sepal.Width, iris), iris, "Sepal.Length")
+#' knn_model(recipes::recipe(Sepal.Length ~ Sepal.Width, iris), iris, "Sepal.Length")
 #'
 #' @export
 #'

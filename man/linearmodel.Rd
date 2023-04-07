@@ -19,6 +19,6 @@ A list that includes the intercept and coefficients for the linear model.
 This function takes in a recipe and a data frame.
 }
 \examples{
-linearmodel(recipe(mpg ~ hp + wt, mtcars), mtcars)
+linearmodel(recipes::recipe(mpg ~ hp + wt, mtcars), mtcars)
 
 }

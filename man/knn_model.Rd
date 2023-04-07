@@ -22,6 +22,6 @@ minimal mean absolute error, minimal mean squared error, best kernel and best k.
 This function takes in a recipe, a data frame and a column name as a string.
 }
 \examples{
-knn_model(recipe(Sepal.Length ~ Sepal.Width, iris), iris, "Sepal.Length")
+knn_model(recipes::recipe(Sepal.Length ~ Sepal.Width, iris), iris, "Sepal.Length")
 
 }

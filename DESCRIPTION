@@ -12,13 +12,13 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 Imports: 
     dplyr,
-    tidyverse,
     ggplot2,
     stats,
     workflows,
     parsnip,
     rsample,
-    tune
+    tune,
+    recipes
 Suggests: 
     knitr,
     rmarkdown,
