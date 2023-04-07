@@ -7,7 +7,7 @@
 #' a title for the plot and the text size.
 #'
 #' @param data A data frame
-#' @param var1 the y variable in the relationship
+#' @param var1 the variable x in the relationship
 #' @param var2 the variable y in the relationship
 #' @param xlab the label of the x-axis
 #' @param ylab the label of the y-axis
