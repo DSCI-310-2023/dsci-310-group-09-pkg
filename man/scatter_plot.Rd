@@ -9,7 +9,7 @@ scatter_plot(data, var1, var2, xlab, ylab, title, text_size)
 \arguments{
 \item{data}{A data frame}
 
-\item{var1}{the y variable in the relationship}
+\item{var1}{the variable x in the relationship}
 
 \item{var2}{the variable y in the relationship}
 
