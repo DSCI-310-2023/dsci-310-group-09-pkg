@@ -1,11 +1,11 @@
 #' Linear Regression Model
-
+#'
 #' Create a linear regression model
 #'
 #' This function takes in a recipe and a data frame.
 #'
-#' @param recipe The recipe for the model.
-#' @param data The dataset for the model.
+#' @param recipe The recipe for the model
+#' @param data The dataset for the model
 #'
 #' @return A list that includes the intercept and coefficients for the linear model.
 #'

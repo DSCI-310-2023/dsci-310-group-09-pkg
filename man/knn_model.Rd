@@ -2,23 +2,25 @@
 % Please edit documentation in R/knn_model.R
 \name{knn_model}
 \alias{knn_model}
-\title{K-NN Regression Model
-Create a K Nearest Neighbours regression model}
+\title{K-NN Regression Model}
 \usage{
 knn_model(recipe, data, y)
 }
 \arguments{
-\item{recipe}{The recipe for the model.}
+\item{recipe}{The recipe for the model}
 
-\item{data}{The dataset for the model.}
+\item{data}{The dataset for the model}
 
-\item{y}{The variable to be used as the outcome}
+\item{y}{The name (as a string) of the column for the response variable}
 }
 \value{
 A model (list) that includes information on the type of response variable,
 minimal mean absolute error, minimal mean squared error, best kernel and best k.
 }
 \description{
+Create a K Nearest Neighbours regression model
+}
+\details{
 This function takes in a recipe, a data frame and a column name as a string.
 }
 \examples{

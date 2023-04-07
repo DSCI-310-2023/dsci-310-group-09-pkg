@@ -1,12 +1,12 @@
 #' K-NN Regression Model
-
+#'
 #' Create a K Nearest Neighbours regression model
 #'
 #' This function takes in a recipe, a data frame and a column name as a string.
 #'
-#' @param recipe The recipe for the model.
-#' @param data The dataset for the model.
-#' @param y The variable to be used as the outcome
+#' @param recipe The recipe for the model
+#' @param data The dataset for the model
+#' @param y The name (as a string) of the column for the response variable
 #'
 #' @return A model (list) that includes information on the type of response variable,
 #' minimal mean absolute error, minimal mean squared error, best kernel and best k.
