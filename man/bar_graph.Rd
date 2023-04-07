@@ -7,6 +7,8 @@
 bar_graph(df, x, y, xlab, ylab, fill_lab, title)
 }
 \arguments{
+\item{df}{The dataset that contains the x variable.}
+
 \item{x}{The name of the discrete variable that will be on the x-axis of the bar graph.}
 
 \item{y}{The name of the numerical variable that will be on the y-axis of the bar graph.}
@@ -18,8 +20,6 @@ bar_graph(df, x, y, xlab, ylab, fill_lab, title)
 \item{fill_lab}{The label of the fill variable.}
 
 \item{title}{The title of the bar graph.}
-
-\item{data}{The dataset that contains the x variable.}
 }
 \value{
 A bar graph for given discrete variable, x, and numerical variable y
@@ -29,7 +29,5 @@ This function takes in a dataset, a variable x from the dataset, a variable y fr
 }
 \examples{
 # bar_graph(iris, iris$Species, iris$Sepal.Width, "Species", "Sepal Width", "Species", "Iris Graph")
-
-
 
 }
