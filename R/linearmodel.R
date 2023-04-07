@@ -10,7 +10,7 @@
 #' @return A list that includes the intercept and coefficients for the linear model.
 #'
 #' @examples
-#' linearmodel(recipe(mpg ~ hp + wt, mtcars), mtcars)
+#' linearmodel(recipes::recipe(mpg ~ hp + wt, mtcars), mtcars)
 #'
 #' @export
 #'
