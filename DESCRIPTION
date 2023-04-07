@@ -21,7 +21,8 @@ Imports:
     workflows,
     parsnip,
     rsample,
-    tune
+    tune,
+    yardstick
 Suggests: 
     knitr,
     rmarkdown,
