@@ -16,7 +16,9 @@ Imports:
     ggplot2,
     stats,
     workflows,
-    parsnip
+    parsnip,
+    rsample,
+    tune
 Suggests: 
     knitr,
     rmarkdown,
