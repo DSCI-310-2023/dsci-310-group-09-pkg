@@ -53,3 +53,20 @@ plot(pressure)
 ```
 
 In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
+
+
+Another useful function in this package is `scatter_plot()`. It takes in the variables `var1`,`var2`, the labels of the x-axis `xlab` and for the y-axis `ylab`, a title of the scatter plot `title`, and `text_size` to specify the size of text of the labels and title. 
+
+```{r}
+library(ln.knn.regression)
+(data <- mtcars)
+(var1 <- mpg)
+(var2 <- hp)
+(xlab <- "Miles Per Gallon (mpg)")
+(ylab <- "Horsepower (hp)")
+(title <- "Scatterplot of MPG vs HP")
+(text_size <- 10)
+scatter_plot(data,var1,var2,xlab,ylab,title,text_size)
+```
+
+The useful function allows you to generate a simple scatter plot with the essential parameters to aid the visualization of your analysis. It makes sure that each parameter is the right type whether it is a data frame, numeric value, or string and produces an error if one does not have the right type of input.
