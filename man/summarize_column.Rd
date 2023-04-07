@@ -19,6 +19,6 @@ if input is an empty df, then return an empty df
 Create a new data frame with 3 columns (mean, med, sd)
 }
 \examples{
-summarize_column(mtcars, am, mpg)
+summarize_column(mtcars, mtcars$mpg)
 
 }
