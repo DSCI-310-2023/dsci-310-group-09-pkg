@@ -45,15 +45,15 @@ bar_graph <- function(df, x, y, xlab, ylab, fill_lab, title) {
   }
   else{
     df |>
-      ggplot(aes(x = x, y = y, fill = x)) +
-      geom_bar(stat = "identity", position = "dodge") +
-      labs(x = xlab, y = ylab, fill = fill_lab) +
-      ggtitle(title) +
-      theme(axis.text.x = element_text(angle = 90, hjust = 1),
-            text = element_text(size = 15),
-            panel.background = element_rect(fill = 'darkgrey', color = 'purple'),
-            plot.title = element_text(hjust = 0.5)) +
-      scale_fill_brewer(palette = 'GnBu')
+      ggplot2::ggplot(ggplot2::aes(x = x, y = y, fill = x)) +
+      ggplot2::geom_bar(stat = "identity", position = "dodge") +
+      ggplot2::labs(x = xlab, y = ylab, fill = fill_lab) +
+      ggplot2::ggtitle(title) +
+      ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90, hjust = 1),
+            text = ggplot2::element_text(size = 15),
+            panel.background = ggplot2::element_rect(fill = 'darkgrey', color = 'purple'),
+            plot.title = ggplot2::element_text(hjust = 0.5)) +
+      ggplot2::scale_fill_brewer(palette = 'GnBu')
   }
 }
 

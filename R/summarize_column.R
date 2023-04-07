@@ -1,15 +1,18 @@
+#' Summarize columns of data
 #'
-#'Create a new data frame with 3 columns (mean, med, sd)
+#' Create a new data frame with 3 columns (mean, med, sd)
 #'
-#'@param data_frame A data frame or data frame extension
-#'@param column unnamed column preparing to summarize
+#' @param data_frame A data frame or data frame extension
+#' @param column unnamed column preparing to summarize
 #'
-#'@return A data frame with 3 columns (mean, med, sd). Given
+#' @return A data frame with 3 columns (mean, med, sd). Given
 #' if input is an empty df, then return an empty df
 #'
-#' #' @export
+#' @examples
+#' summarize_column(mtcars, am, mpg)
 #'
-
+#' @export
+#'
 
 summarize_column <- function(data_frame, column) {
   if(!is.data.frame(data_frame)){
@@ -24,8 +27,8 @@ summarize_column <- function(data_frame, column) {
     return (
       data_frame |>
         dplyr::summarize(mean = mean(column),
-                         med = median(column),
-                         sd = sd(column))
+                         med = stats::median(column),
+                         sd = stats::sd(column))
     )
   }
 }

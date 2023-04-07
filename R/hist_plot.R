@@ -15,6 +15,9 @@
 #'
 #' @examples
 #' # hist_plot(mtcars, mpg, "Miles Per Gallon", "Count", "Histogram for MPG of Cars", 10)
+#'
+#' @export
+#'
 hist_plot <- function(data, var, xlab, ylab, title, text_size){
   x = dplyr::pull(data, {{var}})
   if (!is.data.frame(data)){
@@ -42,11 +45,11 @@ hist_plot <- function(data, var, xlab, ylab, title, text_size){
 
   else {
     return(
-      ggplot(data, aes(x = x)) +
-        geom_histogram() +
-        labs(x = xlab, y = ylab) +
-        ggtitle(title) +
-        theme(text = element_text(size = text_size))
+      ggplot2::ggplot(data, ggplot2::aes(x = x)) +
+        ggplot2::geom_histogram() +
+        ggplot2::labs(x = xlab, y = ylab) +
+        ggplot2::ggtitle(title) +
+        ggplot2::theme(text = ggplot2::element_text(size = text_size))
     )
   }
 }
