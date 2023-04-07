@@ -21,7 +21,6 @@ expected_bar_graph <- ggplot2::ggplot(test_data, aes(x = x, y = y, fill = x)) +
     scale_fill_brewer(palette = 'GnBu')
 expected_bar_graph
 
-
 #test for input variables
 testthat::test_that("Function can only accept certain data types for arguments", {
     expect_error(bar_graph(c(1,0,0), c(2,1), c(1,2), "x", "y", "x", "title"))
@@ -35,6 +34,7 @@ testthat::test_that("Function can only accept certain data types for arguments",
 
 #test for output variables
 testthat::test_that("Checks the output of the graph", {
+test_that("Checks the output of the graph", {
     plot <- bar_graph(test_data, test_data$x, test_data$y, "x", "y", "x", "Bar Graph Test")
     expect_true(is.ggplot(plot))
     expect_equal(xlab(plot)$label, xlab(test_data)$label)

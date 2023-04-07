@@ -4,6 +4,7 @@ Version: 0.0.0.9000
 Authors@R: 
     person("Vera", "Danilova", , "veradanilova765@gmail.com", role = c("aut", "cre"))
     person("Yuyang", "Wang", , "franktcsn@gmail.com", role = c("aut", "cre"))
+    person("Jenna", "Le Noble", , "jenna_lenoble@hotmail.com", role = c("aut", "cre"))
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
 Encoding: UTF-8
