@@ -4,7 +4,7 @@
 \alias{scatter_plot}
 \title{Scatter Plot}
 \usage{
-scatter_plot(data, var1, var2, xlab, ylab, title, text_size)
+scatter_plot(data, var1, var2, xlab, ylab, title, text_size, type = NULL)
 }
 \arguments{
 \item{data}{A data frame}
@@ -20,11 +20,13 @@ scatter_plot(data, var1, var2, xlab, ylab, title, text_size)
 \item{title}{the title of the scatter plot with the regression line}
 
 \item{text_size}{the size of text of the labels/title}
+
+\item{type}{specify whether the model is linear with "lm" (default value = NULL)}
 }
 \value{
 A scatter plot where
 The x-axis are for the x variable specified
-The x-axis are for the x variable specified
+The y-axis are for the y variable specified
 }
 \description{
 Creates a scatter plot using two variables in data frame
@@ -32,9 +34,9 @@ Creates a scatter plot using two variables in data frame
 \details{
 This function takes in a data set, a variable x from the data set,
 a variable y from the data set, an x-axis label, a y-axis label,
-a title for the plot and the text size.
+a title for the plot, the text size, and the model type (optional).
 }
 \examples{
-scatter_plot(mtcars, mpg, hp, "Miles Per Gallon", "Horse Power", "Scatter Plot for MPG vs HP", 10)
+scatter_plot(mtcars, mpg, hp, "Miles Per Gallon", "Horse Power", "Scatter Plot for MPG vs HP", 10, "lm")
 
 }
