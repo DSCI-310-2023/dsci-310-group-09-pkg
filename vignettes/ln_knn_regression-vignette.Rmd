@@ -14,6 +14,140 @@ knitr::opts_chunk$set(
 )
 ```
 
+This vignette contains examples and documentation on how the ln.knn.regression functions can be used in real-life scenarios. The package's ultimate goal is to help those who are building either a linear or KNN regression model.
+
+When building a model, there are a few things that you must do: 
+
+* State the question you are trying to answer. 
+* Perform summaries of the data for exploratory data analysis.
+* Create visualizations of the data for exploratory data analysis .
+* Build the regression models.
+* Assess the models' performances by calculating its accuracy. 
+
+The ln.knn.regression package makes performing regression analysis much easier for you: 
+
+* Consists of multiple functions that allows you to easily visualize your data.
+* Contains a function that calculates summary statistics of your data.
+* Builds linear and knn regression model and calculates their RMSPE value.
+
+## Data: iris 
+To explore the package, we will be using the iris data set. This data set contains 150 rows and 5 columns. To read the iris data set documentation, you can check `?iris`
+
+
 ```{r setup}
-#library(ln.knn.regression)
+library(ln.knn.regression)
+dim(iris)
+head(iris)
+```
+
+## Functions 
+We can break down our functions into 3 different groups: 
+
+- Visualizations 
+- Summary Statistics 
+- Regression Models
+
+### Visualizations 
+
+#### 1. Create bar graphs with `bar_graph()`
+
+`bar_graph()` allows you to create a bar graph and checks whether or not you are using the appropriate argument types. Bar graphs are commonly used to visualize discrete variables and recognize trends in the data. 
+
+The first argument is a data frame that contains the data that you want to visualize. The second argument contains the discrete variable that will be on the x-axis, and the third argument contains the numerical variable that will be on the y-axis. The rest of the arguments are strings that will be used to label your axis and graph. 
+
+For example, we can to view the sepal width distribution of different types of species in the iris data set: 
+
+```{r}
+bar_graph(iris, iris$Species, iris$Sepal.Length, "Species", "Sepal Length", "Species", "Species vs Sepal Length Distribution")
+```
+#### 2. Create histogram with `hist_plot()`
+
+`hist_plot()` allows you to create a histogram and checks whether or not you are using the appropriate argument types. Contrary to bar graphs, histograms are commonly used to visualize trends for continuous variables. The x-axis is a number line of the x variable that has been split into multiple groups, and the y-axis is the number of times the value has appeared within that range. 
+
+The first argument is a data frame that contains the data that you want to visualize. The second argument contains the continuous variable that will be on the x-axis. The third-fifth arguments are strings that will be used to label your axis and graph, and the final argument is a numeric value that allows you to adjust the text size of your labels.  
+
+For example, we can to view the sepal width distribution in the iris data set: 
+
+```{r}
+hist_plot(iris, Sepal.Length, "Sepal Length", "Count", "Sepal Length Distribution", 10)
+```
+
+#### 3. Create scatterplot with `scatter_plot()`
+
+`scatter_plot()` allows you to create a scatter plot and checks whether or not you are using the appropriate argument types. Scatter plots are commonly used to visualize relationships between two continuous variables. 
+
+The first argument is a data frame that contains the data that you want to visualize. The second and third argument contains the continuous variables that will be on the x-axis and the y-axis. The fourth-sixth arguments are strings that will be used to label your axis and graph, and the final argument is a numeric value that allows you to adjust the text size of your labels.  
+
+For example, we can to view the relationship between the sepal length and sepal width of the flowers in the iris data set: 
+
+```{r}
+scatter_plot(iris, Sepal.Length, Sepal.Width, "Sepal Length", "Sepal Width", "Relationship of Sepal Length and Width", 10)
+```
+### Summary Statistics 
+
+### Create a summary table with `summarize_column()`
+`summarize_column()` allows you to create a 1x3 data frame that contains the summary statistics mean, median, and standard deviation(sd). The mean and median measures the center of the distribution, whereas the standard deviation measures the spread of the distribution. 
+
+The function only takes in 2 arguments. The first argument is the data frame, the second argument is the column/variable name that you want to find the summary statistics for. The second argument can only be a numerical variable. If a non-numeric variable is inputted, the function will return an error message. 
+
+For example, we want to find the mean, median, and sd of the petal width in the iris dataset: 
+
+```{r}
+summarize_column(iris, iris$Petal.Width)
+```
+
+### Regression Models
+
+#### 1. Create a linear regression model with `linearmodel()`
+
+`linearmodel()` allows you to create a linear regression model and returns a list of the regression coefficients, including the intercept. This model is used to describe the linear relationship between the response variable $y$ and the predictor variable(s) $x_i$. It is also used to predict the value of an unknown data from the response variable using the known values of the predictor variable(s). 
+
+The function takes in 2 arguments. The first argument is the model recipe. This is where we specify what the predictor variable(s) and response variable are; it can be done by using the `recipe` function found in the recipes package. The second argument is the data set for the model. It is important that the data set specified in the recipe is the same as the second argument. 
+
+For example, we want to find the relationship between the sepal width and the sepal length in the iris dataset by creating a linear regression model: 
+
+```{r}
+iris_recipe <- recipe(Sepal.Length ~ Sepal.Width, iris)
+linearmodel(iris_recipe, iris)
+```
+
+You can also create a linear regression model with multiple predictor variables. For example, we want to find the relationship between the petal width and the sepal width & length in the iris data set:
+
+```{r}
+iris_recipe_2 <- recipe(Petal.Width ~ Sepal.Width + Sepal.Length, iris)
+linearmodel(iris_recipe_2, iris)
+```
+
+Using a linear model to predict a value is not too complicated since it represented by the formula: 
+$$Y = b_0 + b_1x_1 + b_2x_2 + ... + b_nx_n $$
+where $b_i$ is the regression coefficient and $x_i$ is the predictor variables. Plugging in the coefficient values $b_i$ to the equation will allow you to calculate the value of the response variable $Y$. 
+
+#### 2. Create a knn regression model with `knn_model()`
+
+`knn_model()` allows you to create a KNN regression model and returns a list of information on the type of response variable, minimal mean absolute error, minimal mean squared error, best kernel and best k. Since the knn-regression is a non-parametric method, 
+
+The function takes in 3 arguments. The first argument is the model recipe. This is where we specify what the predictor variable(s) and response variable are; it can be done by using the `recipe` function found in the recipes package. The second argument is the data set for the model. It is important that the data set specified in the recipe is the same as the second argument. The third argument is the response variable in the form of a string.  
+
+For example, we want to find the relationship between the petal width and the sepal width & length in the iris data set by creating a KNN-regression model. 
+
+```{r}
+iris_recipe <- recipe(Petal.Width ~ Sepal.Length + Sepal.Width, iris)
+knn_model(iris_recipe, iris, "Petal.Width")
+```
+
+Not like the linear regression model, you can't easily predict a value using the output of the `knn_model()` function since there is no simple mathematical equation for this model. Instead, predictions can only be done using the KNN algorithm. 
+
+### 3. Calculate the RMSPE value of the model with `model_rmspe()`
+
+`model_rmspe()` allows you to calculate the RMSPE (root mean square prediction error) value of a model. Now that we are able to build regression models, we need to check which of these models is the best one. For regression models, rmspe is a metric that evaluates the quality of your model; the better model will have a lower RMSPE value. 
+
+The function takes in 3 arguments. The first argument is the linear/regression model. This can be done using either the `linearmodel` function or the`knn_model` function that is also included in this package. The second argument is the testing data set for the model. It is important that the testing data set is different from the (training) data set that was used to build the model. However, the training and testing data sets need to contain the same variables. The third argument is the response variable in the form of a string. 
+
+For example, we want to find the RMSPE value of KNN-regression model and the linear regression model that has sepal length as a response variable, and sepal width as a predictor variable. 
+
+```{r}
+iris_recipe <- recipe(Sepal.Length ~ Sepal.Width, iris)
+linearmodel(iris_recipe, iris)
+knn_model(iris_recipe, iris, "Sepal Length")
+
 ```
