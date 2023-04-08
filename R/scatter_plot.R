@@ -13,14 +13,14 @@
 #' @param ylab the label of the y-axis
 #' @param title the title of the scatter plot with the regression line
 #' @param text_size the size of text of the labels/title
-#' @param type specify whether the model is linear with "lm" (default value = NULL)
+#' @param type specify whether the model is linear with "lm" or k-nn with "knn" (default value = NULL)
 #'
 #' @return A scatter plot where
 #'   The x-axis are for the x variable specified
 #'   The y-axis are for the y variable specified
 #'
 #' @examples
-#' scatter_plot(mtcars, mpg, hp, "Miles Per Gallon", "Horse Power",
+#' scatter_plot(mtcars, hp, mpg, "Miles Per Gallon", "Horse Power",
 #' "Scatter Plot for MPG vs HP", 10, "lm")
 #'
 #' @export
@@ -62,7 +62,11 @@ scatter_plot <- function(data,var1,var2,xlab,ylab,title,text_size,type=NULL){
   }
 
   else if(!is.character(type)){
-    stop("Please put in a string parameter for model type i.e. 'lm'.")
+    stop("Please put in a string parameter for model type i.e. 'lm' or 'knn'.")
+  }
+
+  else if(type != "lm" & type != "knn") {
+    stop("Please choose model type to be either 'lm', 'knn' or empty by default.")
   }
 
   else if(type == "lm") {
@@ -74,6 +78,20 @@ scatter_plot <- function(data,var1,var2,xlab,ylab,title,text_size,type=NULL){
         ggplot2::theme(text=ggplot2::element_text(size=text_size))+
         ggplot2::geom_smooth(method = type, se = FALSE)
       )
+
+  }
+
+  else if(type == "knn") {
+    return(
+      ggplot2::ggplot(data, ggplot2::aes(x=x,y=y)) +
+        ggplot2::geom_point()+
+        ggplot2::labs(x=xlab,y=ylab)+
+        ggplot2::ggtitle(title)+
+        ggplot2::theme(text=ggplot2::element_text(size=text_size))+
+        ggplot2::geom_line(data,
+                           mapping = ggplot2::aes(x = x, y = .pred),
+                           color = "blue")
+    )
 
   }
 
