@@ -4,17 +4,17 @@
 # ln.knn.regression
 
 <!-- badges: start -->
-# codecov badge for test coverage
-<a href="https://codecov.io/gh/DSCI-310/dsci-310-group-09-pkg" > 
- <img src="https://codecov.io/gh/DSCI-310/dsci-310-group-09-pkg/branch/main/graph/badge.svg?token=gOMgyT71QL"/> 
- </a>
+
+# codecov badge for code coverage
+
+[![codecov](https://codecov.io/gh/DSCI-310/dsci-310-group-09-pkg/branch/main/graph/badge.svg?token=gOMgyT71QL)](https://codecov.io/gh/DSCI-310/dsci-310-group-09-pkg)
 <!-- badges: end -->
 
 The goal of ln.knn.regression is to assist in creating a regression
-analysis project. It includes functions that help to explore and
-summarize the data. It also includes functions that directly build
-linear and k-nn models. Additionally, it contains functions that can
-test the model’s error and accuracy.
+analysis project from start to finish. It includes functions that help
+to explore, summarize and visualize the data. It also includes functions
+that directly build and visualize linear and k-nn models. Additionally,
+it contains functions that can test the model’s error and accuracy.
 
 ## Installation
 
@@ -94,26 +94,7 @@ mtcars_rmspe
 This tells us that the model has a prediction error of around 5 miles
 per gallon when tested on data it has not seen before.
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this. You could also
-use GitHub Actions to re-render `README.Rmd` every time you push. An
-example workflow can be found here:
-<https://github.com/r-lib/actions/tree/v1/examples>.
+## Conclusion
 
-You can also embed plots, for example:
-
-<img src="man/figures/README-pressure-1.png" width="100%" />
-
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
-
-Another useful function in this package is `scatter_plot()`. It takes in
-the variables `var1`,`var2`, the labels of the x-axis `xlab` and for the
-y-axis `ylab`, a title of the scatter plot `title`, and `text_size` to
-specify the size of text of the labels and title.
-
-The useful function allows you to generate a simple scatter plot with
-the essential parameters to aid the visualization of your analysis. It
-makes sure that each parameter is the right type whether it is a data
-frame, numeric value, or string and produces an error if one does not
-have the right type of input.
+Overall, `ln.knn.regression` is a package than can help you perform a
+linear and k-nn regression analysis from beginning to end.

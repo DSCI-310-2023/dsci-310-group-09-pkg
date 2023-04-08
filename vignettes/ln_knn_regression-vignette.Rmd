@@ -63,7 +63,7 @@ The first argument is a data frame that contains the data that you want to visua
 
 For example, we can to view the sepal width distribution of different types of species in the iris data set: 
 
-```{r fig.width = 7, fig.height = 4}
+```{r example-bar, fig.cap="Bar Graph for Iris Species Sepal Length", fig.width = 7, fig.height = 4}
 bar_graph(iris, iris$Species, iris$Sepal.Length, "Species", "Sepal Length", "Species", "Species vs Sepal Length Distribution")
 ```
 
@@ -75,7 +75,7 @@ The first argument is a data frame that contains the data that you want to visua
 
 For example, we can to view the sepal width distribution in the iris data set: 
 
-```{r fig.width = 7, fig.height = 4}
+```{r example-hist, fig.cap="Histogram for Iris Sepal Length", fig.width = 7, fig.height = 4}
 hist_plot(iris, Sepal.Length, "Sepal Length", "Count", "Sepal Length Distribution", 10)
 ```
 
@@ -87,7 +87,7 @@ The first argument is a data frame that contains the data that you want to visua
 
 For example, we can to view the relationship between the sepal length and sepal width of the flowers in the iris data set: 
 
-```{r fig.width = 7, fig.height = 4}
+```{r example-scatter, fig.cap="Scatter Plot for Iris Sepal Length vs Width", fig.width = 7, fig.height = 4}
 scatter_plot(iris, Sepal.Length, Sepal.Width, "Sepal Length", "Sepal Width", "Relationship of Sepal Length and Width", 10)
 ```
 
@@ -136,16 +136,16 @@ where $b_i$ is the regression coefficient and $x_i$ is the predictor variables. 
 
 The function takes in 3 arguments. The first argument is the model recipe. This is where we specify what the predictor variable(s) and response variable are; it can be done by using the `recipe` function found in the recipes package. The second argument is the data set for the model. It is important that the data set specified in the recipe is the same as the second argument. The third argument is the response variable in the form of a string.  
 
-For example, we want to find the relationship between the petal width and the sepal width & length in the iris data set by creating a KNN-regression model. 
+For example, we want to find the relationship between the sepal length and the sepal width in the iris data set by creating a KNN-regression model. 
 
 ```{r}
-iris_recipe <- recipes::recipe(Petal.Width ~ Sepal.Length + Sepal.Width, iris)
+iris_recipe <- recipes::recipe(Sepal.Length ~ Sepal.Width, iris)
 knn_model(iris_recipe, iris, "Petal.Width")
 ```
 
 Not like the linear regression model, you can't easily predict a value using the output of the `knn_model()` function since there is no simple mathematical equation for this model. Instead, predictions can only be done using the KNN algorithm. 
 
-### 3. Calculate the RMSPE value of the model with `model_rmspe()`
+#### 3. Calculate the RMSPE value of the model with `model_rmspe()`
 
 `model_rmspe()` allows you to calculate the RMSPE (root mean square prediction error) value of a model. Now that we are able to build regression models, we need to check which of these models is the best one. For regression models, rmspe is a metric that evaluates the quality of your model; the better model will have a lower RMSPE value. 
 
@@ -167,6 +167,27 @@ print(paste0("The RMSPE of the linear model is: ", lm_rmspe))
 print(paste0("The RMSPE of the KNN model is: ", knn_rmspe))
 ```
 
-From the output above, we see that the the RSMPE of the linear model is 0.83, while the RMSPE of the KNN model is 0.81. This implies that the KNN model is a better regression model since it has a lower prediction error.
+From the output above, we see that the the RSMPE of the linear model is `r format(round(lm_rmspe, 2))`, while the RMSPE of the KNN model is `r format(round(knn_rmspe, 2))`. This implies that the KNN model is a better regression model since it has a lower prediction error.
 
+#### 4. Create visual representations of the models with `scatter_plot()`
+
+Lastly, we can visualize the predictive models with the original data using `scatter_plot()`.
+
+For the linear regression model, we can show the model's best fit line:
+
+```{r lm_scatter, fig.cap = "Linear Model for Iris Sepal Length", fig.width = 7, fig.height = 4}
+scatter_plot(iris_train, Sepal.Width, Sepal.Length, "Sepal Width", "Sepal Length", "Linear Regression Model for Sepal Length", 10, "lm")
+```
+
+And for the k-nn regression model, we can show the model's best fit curve:
+
+```{r knn_scatter, fig.cap = "K-NN Model for Iris Sepal Length", fig.width = 7, fig.height = 4}
+knn_prediction <- knn_iris |>
+    stats::predict(iris_train) |>
+    dplyr::bind_cols(iris_train)
+
+scatter_plot(knn_prediction, Sepal.Width, Sepal.Length, "Sepal Width", "Sepal Length", "Linear Regression Model for Sepal Length", 10) + ggplot2::geom_line(data = knn_prediction, 
+            mapping = ggplot2::aes(x = Sepal.Width, y = .pred), 
+            color = "blue")
+```
 

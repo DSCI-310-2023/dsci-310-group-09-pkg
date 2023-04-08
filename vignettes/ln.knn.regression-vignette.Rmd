@@ -104,17 +104,17 @@ summarize_column(iris, iris$Petal.Width)
 
 The function takes in 2 arguments. The first argument is the model recipe. This is where we specify what the predictor variable(s) and response variable are; it can be done by using the `recipe` function found in the recipes package. The second argument is the data set for the model. It is important that the data set specified in the recipe is the same as the second argument. 
 
-For example, we want to find the relationship between the sepal width and the sepal length in the iris dataset by creating a linear regression model: 
+For example, we want to find the relationship between the sepal width and the sepal length in the iris dataset by creating a linear regression model. 
 
 ```{r}
-iris_recipe <- recipe(Sepal.Length ~ Sepal.Width, iris)
+iris_recipe <- recipes::recipe(Sepal.Length ~ Sepal.Width, iris)
 linearmodel(iris_recipe, iris)
 ```
 
 You can also create a linear regression model with multiple predictor variables. For example, we want to find the relationship between the petal width and the sepal width & length in the iris data set:
 
 ```{r}
-iris_recipe_2 <- recipe(Petal.Width ~ Sepal.Width + Sepal.Length, iris)
+iris_recipe_2 <- recipes::recipe(Petal.Width ~ Sepal.Width + Sepal.Length, iris)
 linearmodel(iris_recipe_2, iris)
 ```
 
@@ -131,7 +131,7 @@ The function takes in 3 arguments. The first argument is the model recipe. This 
 For example, we want to find the relationship between the petal width and the sepal width & length in the iris data set by creating a KNN-regression model. 
 
 ```{r}
-iris_recipe <- recipe(Petal.Width ~ Sepal.Length + Sepal.Width, iris)
+iris_recipe <- recipes::recipe(Petal.Width ~ Sepal.Length + Sepal.Width, iris)
 knn_model(iris_recipe, iris, "Petal.Width")
 ```
 
