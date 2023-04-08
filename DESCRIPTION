@@ -22,7 +22,8 @@ Imports:
     parsnip,
     rsample,
     tune,
-    yardstick
+    yardstick,
+    rlang
 Suggests: 
     knitr,
     rmarkdown,
