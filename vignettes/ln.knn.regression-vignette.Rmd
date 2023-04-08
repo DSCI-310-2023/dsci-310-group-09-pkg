@@ -1,8 +1,8 @@
 ---
-title: "ln.knn.regression-vignette"
+title: "ln_knn_regression-vignette"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{ln.knn.regression-vignette}
+  %\VignetteIndexEntry{ln_knn_regression-vignette}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -10,17 +10,11 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>", 
-  warning = FALSE, 
-  message = FALSE
+  comment = "#>"
 )
 ```
 
-```{r, include=FALSE}
-devtools::load_all(".")
-```
-
-This vignette contains examples and documentation on how the ln.knn.regression functions can be used in real-life scenarios. The package's ultimate goal is to help those who are building either a linear or KNN regression model decide what variables to use, and which model is more appropriate.  
+This vignette contains examples and documentation on how the ln.knn.regression functions can be used in real-life scenarios. The package's ultimate goal is to help those who are building either a linear or KNN regression model.
 
 When building a model, there are a few things that you must do: 
 
@@ -63,10 +57,9 @@ The first argument is a data frame that contains the data that you want to visua
 
 For example, we can to view the sepal width distribution of different types of species in the iris data set: 
 
-```{r fig.width = 7, fig.height = 4}
+```{r}
 bar_graph(iris, iris$Species, iris$Sepal.Length, "Species", "Sepal Length", "Species", "Species vs Sepal Length Distribution")
 ```
-
 #### 2. Create histogram with `hist_plot()`
 
 `hist_plot()` allows you to create a histogram and checks whether or not you are using the appropriate argument types. Contrary to bar graphs, histograms are commonly used to visualize trends for continuous variables. The x-axis is a number line of the x variable that has been split into multiple groups, and the y-axis is the number of times the value has appeared within that range. 
@@ -75,7 +68,7 @@ The first argument is a data frame that contains the data that you want to visua
 
 For example, we can to view the sepal width distribution in the iris data set: 
 
-```{r fig.width = 7, fig.height = 4}
+```{r}
 hist_plot(iris, Sepal.Length, "Sepal Length", "Count", "Sepal Length Distribution", 10)
 ```
 
@@ -87,16 +80,15 @@ The first argument is a data frame that contains the data that you want to visua
 
 For example, we can to view the relationship between the sepal length and sepal width of the flowers in the iris data set: 
 
-```{r fig.width = 7, fig.height = 4}
+```{r}
 scatter_plot(iris, Sepal.Length, Sepal.Width, "Sepal Length", "Sepal Width", "Relationship of Sepal Length and Width", 10)
 ```
-
 ### Summary Statistics 
 
-#### 1. Create a summary table with `summarize_column()`
+### Create a summary table with `summarize_column()`
 `summarize_column()` allows you to create a 1x3 data frame that contains the summary statistics mean, median, and standard deviation(sd). The mean and median measures the center of the distribution, whereas the standard deviation measures the spread of the distribution. 
 
-The function takes in 2 arguments. The first argument is the data frame, the second argument is the column/variable name that you want to find the summary statistics for. The second argument can only be a numerical variable. If a non-numeric variable is inputted, the function will return an error message. 
+The function only takes in 2 arguments. The first argument is the data frame, the second argument is the column/variable name that you want to find the summary statistics for. The second argument can only be a numerical variable. If a non-numeric variable is inputted, the function will return an error message. 
 
 For example, we want to find the mean, median, and sd of the petal width in the iris dataset: 
 
@@ -115,14 +107,14 @@ The function takes in 2 arguments. The first argument is the model recipe. This 
 For example, we want to find the relationship between the sepal width and the sepal length in the iris dataset by creating a linear regression model: 
 
 ```{r}
-iris_recipe <- recipes::recipe(Sepal.Length ~ Sepal.Width, iris)
+iris_recipe <- recipe(Sepal.Length ~ Sepal.Width, iris)
 linearmodel(iris_recipe, iris)
 ```
 
 You can also create a linear regression model with multiple predictor variables. For example, we want to find the relationship between the petal width and the sepal width & length in the iris data set:
 
 ```{r}
-iris_recipe_2 <- recipes::recipe(Petal.Width ~ Sepal.Width + Sepal.Length, iris)
+iris_recipe_2 <- recipe(Petal.Width ~ Sepal.Width + Sepal.Length, iris)
 linearmodel(iris_recipe_2, iris)
 ```
 
@@ -139,7 +131,7 @@ The function takes in 3 arguments. The first argument is the model recipe. This 
 For example, we want to find the relationship between the petal width and the sepal width & length in the iris data set by creating a KNN-regression model. 
 
 ```{r}
-iris_recipe <- recipes::recipe(Petal.Width ~ Sepal.Length + Sepal.Width, iris)
+iris_recipe <- recipe(Petal.Width ~ Sepal.Length + Sepal.Width, iris)
 knn_model(iris_recipe, iris, "Petal.Width")
 ```
 
@@ -154,19 +146,7 @@ The function takes in 3 arguments. The first argument is the linear/regression m
 For example, we want to find the RMSPE value of KNN-regression model and the linear regression model that has sepal length as a response variable, and sepal width as a predictor variable. 
 
 ```{r}
-set.seed(12)
-split_iris <- rsample::initial_split(iris)
-iris_train <- rsample::training(split_iris)
-iris_test <- rsample::testing(split_iris)
-iris_recipe <- recipes::recipe(Sepal.Length ~ Sepal.Width, iris_train)
-lm_iris <- linearmodel(iris_recipe, iris_train)
-knn_iris <- knn_model(iris_recipe, iris_train, "Sepal.Length")
-lm_rmspe <- model_rmspe(lm_iris, iris_test, "Sepal.Length")
-knn_rmspe <- model_rmspe(knn_iris, iris_test, "Sepal.Length")
-print(paste0("The RMSPE of the linear model is: ", lm_rmspe))
-print(paste0("The RMSPE of the KNN model is: ", knn_rmspe))
+iris_recipe <- recipe(Sepal.Length ~ Sepal.Width, iris)
+linearmodel(iris_recipe, iris)
+knn_model(iris_recipe, iris, "Sepal Length")
 ```
-
-From the output above, we see that the the RSMPE of the linear model is 0.83, while the RMSPE of the KNN model is 0.81. This implies that the KNN model is a better regression model since it has a lower prediction error.
-
-
