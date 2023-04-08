@@ -20,7 +20,7 @@
 #'   The y-axis are for the y variable specified
 #'
 #' @examples
-#' scatter_plot(mtcars, mpg, hp, "lm", Miles Per Gallon", "Horse Power", "Scatter Plot for MPG vs HP", 10)
+#' scatter_plot(mtcars, mpg, hp, Miles Per Gallon", "Horse Power", "Scatter Plot for MPG vs HP", 10, "lm")
 #'
 #' @export
 #'
