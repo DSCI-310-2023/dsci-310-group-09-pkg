@@ -37,6 +37,7 @@ a variable y from the data set, an x-axis label, a y-axis label,
 a title for the plot, the text size, and the model type (optional).
 }
 \examples{
-scatter_plot(mtcars, mpg, hp, "Miles Per Gallon", "Horse Power", "Scatter Plot for MPG vs HP", 10, "lm")
+scatter_plot(mtcars, mpg, hp, "Miles Per Gallon", "Horse Power",
+"Scatter Plot for MPG vs HP", 10, "lm")
 
 }
