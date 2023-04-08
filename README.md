@@ -4,6 +4,10 @@
 # ln.knn.regression
 
 <!-- badges: start -->
+# codecov badge for test coverage
+<a href="https://codecov.io/gh/DSCI-310/dsci-310-group-09-pkg" > 
+ <img src="https://codecov.io/gh/DSCI-310/dsci-310-group-09-pkg/branch/main/graph/badge.svg?token=gOMgyT71QL"/> 
+ </a>
 <!-- badges: end -->
 
 The goal of ln.knn.regression is to …

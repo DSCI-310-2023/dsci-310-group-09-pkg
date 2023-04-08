@@ -47,6 +47,8 @@ sd if input is an empty df", {
 })
 
 
+# use expect_error() for tests on stop cases
+
 
 
 
