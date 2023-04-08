@@ -16,6 +16,8 @@ knitr::opts_chunk$set(
 # ln.knn.regression
 
 <!-- badges: start -->
+# codecov badge for code coverage
+[![codecov](https://codecov.io/gh/DSCI-310/dsci-310-group-09-pkg/branch/main/graph/badge.svg?token=gOMgyT71QL)](https://codecov.io/gh/DSCI-310/dsci-310-group-09-pkg)
 <!-- badges: end -->
 
 The goal of ln.knn.regression is to ...
