@@ -16,6 +16,8 @@ knitr::opts_chunk$set(
 # ln.knn.regression
 
 <!-- badges: start -->
+# codecov badge for code coverage
+[![codecov](https://codecov.io/gh/DSCI-310/dsci-310-group-09-pkg/branch/main/graph/badge.svg?token=gOMgyT71QL)](https://codecov.io/gh/DSCI-310/dsci-310-group-09-pkg)
 <!-- badges: end -->
 
 The goal of ln.knn.regression is to assist in creating a regression analysis project. It includes functions that help to explore and summarize the data. It also includes functions that directly build linear and k-nn models. Additionally, it contains functions that can test the model's error and accuracy. 
