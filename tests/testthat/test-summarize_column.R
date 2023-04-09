@@ -49,7 +49,14 @@ sd if input is an empty df", {
 
 # use expect_error() for tests on stop cases
 
+testthat::test_that("summarize_column returns error when input is not df or df extension", {
+  expect_error(summarize_column(mtcars, vsd))
+  expect_error(summarize_column(mtw, vsd))
+  expect_error(summarize_column(324, sdf))
+})
 
 
-
-
+testthat::test_that("summarize_column returns error when input is not df or df extension", {
+  expect_error(summarize_column(mtcars, rgd))
+  expect_error(summarize_column(mtcars, uih))
+})
