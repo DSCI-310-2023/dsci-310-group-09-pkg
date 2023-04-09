@@ -21,7 +21,7 @@ scatter_plot(data, var1, var2, xlab, ylab, title, text_size, type = NULL)
 
 \item{text_size}{the size of text of the labels/title}
 
-\item{type}{specify whether the model is linear with "lm" (default value = NULL)}
+\item{type}{specify whether the model is linear with "lm" or k-nn with "knn" (default value = NULL)}
 }
 \value{
 A scatter plot where
@@ -37,7 +37,7 @@ a variable y from the data set, an x-axis label, a y-axis label,
 a title for the plot, the text size, and the model type (optional).
 }
 \examples{
-scatter_plot(mtcars, mpg, hp, "Miles Per Gallon", "Horse Power",
+scatter_plot(mtcars, hp, mpg, "Miles Per Gallon", "Horse Power",
 "Scatter Plot for MPG vs HP", 10, "lm")
 
 }
