@@ -5,8 +5,12 @@ empty_df_output <- data.frame(mean = numeric(0),
                               med = numeric(0),
                               sd = numeric(0))
 
+df_string <- data.frame(player = c("Novak","Rafa","Roger"))
+
 hp <- print(mtcars[, c("hp")])
+
 qsec <- print(mtcars[, c("qsec")])
+
 mpg_output <- data.frame(mean(mpg),
                          median(mpg),
                          sd(mpg))
@@ -59,5 +63,11 @@ testthat::test_that("summarize_column returns error when input is not df or df e
 testthat::test_that("summarize_column returns error when input is not df or df extension", {
   expect_error(summarize_column(mtcars, rgd))
   expect_error(summarize_column(mtcars, uih))
+})
+
+
+testthat::test_that("summarize_column returns error when input column is not numeric", {
+  expect_error(summarize_column(mtcars, df_string))
+  expect_error(summarize_column(mtcars, c("esf","gr", 345, "dsfl")))
 })
 
