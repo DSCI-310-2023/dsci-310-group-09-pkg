@@ -132,7 +132,7 @@ where $b_i$ is the regression coefficient and $x_i$ is the predictor variables. 
 
 #### 2. Create a knn regression model with `knn_model()`
 
-`knn_model()` allows you to create a KNN regression model and returns a list of information on the type of response variable, minimal mean absolute error, minimal mean squared error, best kernel and best k. Since the knn-regression is a non-parametric method, 
+`knn_model()` allows you to create a KNN regression model and returns a list of information on the type of response variable, minimal mean absolute error, minimal mean squared error, best kernel and best k. 
 
 The function takes in 3 arguments. The first argument is the model recipe. This is where we specify what the predictor variable(s) and response variable are; it can be done by using the `recipe` function found in the recipes package. The second argument is the data set for the model. It is important that the data set specified in the recipe is the same as the second argument. The third argument is the response variable in the form of a string.  
 
@@ -186,8 +186,11 @@ knn_prediction <- knn_iris |>
     stats::predict(iris_train) |>
     dplyr::bind_cols(iris_train)
 
-scatter_plot(knn_prediction, Sepal.Width, Sepal.Length, "Sepal Width", "Sepal Length", "Linear Regression Model for Sepal Length", 10) + ggplot2::geom_line(data = knn_prediction, 
-            mapping = ggplot2::aes(x = Sepal.Width, y = .pred), 
-            color = "blue")
+scatter_plot(knn_prediction, Sepal.Width, Sepal.Length, "Sepal Width", "Sepal Length", "Linear Regression Model for Sepal Length", 10, "knn")
 ```
 
+These two plots show the difference between the linear and KNN regression models. 
+
+## Conclusion 
+
+With `ln.knn.regression`, you can build linear and KNN **regression** models with any quantitative variables and any number of predictors. Refer to [tidymodels](https://www.tidymodels.org/) for more information on other analysis models.

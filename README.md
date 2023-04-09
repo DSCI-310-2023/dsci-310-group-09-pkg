@@ -5,12 +5,10 @@
 
 <!-- badges: start -->
 
-# codecov badge for code coverage
-
 [![codecov](https://codecov.io/gh/DSCI-310/dsci-310-group-09-pkg/branch/main/graph/badge.svg?token=gOMgyT71QL)](https://codecov.io/gh/DSCI-310/dsci-310-group-09-pkg)
 <!-- badges: end -->
 
-The goal of ln.knn.regression is to assist in creating a regression
+The goal of `ln.knn.regression` is to assist in creating a regression
 analysis project from start to finish. It includes functions that help
 to explore, summarize and visualize the data. It also includes functions
 that directly build and visualize linear and k-nn models. Additionally,
@@ -26,10 +24,22 @@ You can install the development version of ln.knn.regression from
 devtools::install_github("DSCI-310/dsci-310-group-09-pkg")
 ```
 
+## Functions
+
+- `bar_graph()`
+- `hist_plot()`
+- `knn_model()`
+- `linearmodel()`
+- `model_rmspe()`
+- \`scatter_plot()
+- `summarize_column()`
+
 ## Example
 
-This is a basic example which shows you how to use the functions for
-EDA:
+This is a basic example which shows you how to explore the data and
+build a linear regression model.
+
+### 1. EDA
 
 ``` r
 library(ln.knn.regression)
@@ -42,9 +52,9 @@ hist_plot(mtcars, mpg, "MPG", "Count", "Histogram for MPG of Cars", 10)
 #> `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-<img src="man/figures/README-example1-1.png" width="100%" />
+<img src="man/figures/README-EDA-1.png" width="100%" />
 
-Here is an example of how to build a linear regression model:
+### 2. Model Building
 
 ``` r
 mtcars_model <- linearmodel(recipes::recipe(mpg ~ hp, mtcars_training), mtcars_training)
@@ -66,8 +76,7 @@ mtcars_model
 #>    28.36292     -0.05863
 ```
 
-Now we can create a scatter plot that shows the best fit line from the
-model:
+### 3. Visualizations
 
 ``` r
 scatter_plot(mtcars_training, 
@@ -81,9 +90,9 @@ scatter_plot(mtcars_training,
 #> `geom_smooth()` using formula = 'y ~ x'
 ```
 
-<img src="man/figures/README-example3-1.png" width="100%" />
+<img src="man/figures/README-visualization-1.png" width="100%" />
 
-Finally, we can test the model’s error by finding the RMSPE value:
+### 4. Finding model’s accuracy
 
 ``` r
 mtcars_rmspe <- model_rmspe(mtcars_model, mtcars_testing, "mpg")
@@ -94,7 +103,19 @@ mtcars_rmspe
 This tells us that the model has a prediction error of around 5 miles
 per gallon when tested on data it has not seen before.
 
-## Conclusion
+## Contributing
 
-Overall, `ln.knn.regression` is a package than can help you perform a
-linear and k-nn regression analysis from beginning to end.
+We appreciate contributions to the `ln.knn.regression` package. Please
+refer to our [Contributing
+document](https://github.com/DSCI-310/dsci-310-group-09-pkg/blob/main/CONTRIBUTING.md)
+and [Code of
+Conduct](https://github.com/DSCI-310/dsci-310-group-09-pkg/blob/main/CODE_OF_CONDUCT.md)
+for more information.
+
+## License
+
+The software provided in this project is offered under the [MIT open
+source license](https://opensource.org/license/mit/). Refer to the
+[license
+file](https://github.com/DSCI-310/dsci-310-group-09-pkg/blob/main/LICENSE.md)
+for more information.
