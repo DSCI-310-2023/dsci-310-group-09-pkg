@@ -68,6 +68,16 @@ testthat::test_that("Checks the output of the graph", {
   #expect_equal(ggplot2::type(plot2), type=="lm")
 })
 
+#test for output variables for function with type="knn"
+testthat::test_that("Checks the output of the graph", {
+  plot3 <- scatter_plot(test_data_scatter, x, y, "x", "y", "Scatterplot Test", 10)
+  expect_true(ggplot2::is.ggplot(plot2))
+  expect_equal(ggplot2::xlab(plot2)$label, ggplot2::xlab(test_data_scatter)$label)
+  expect_equal(ggplot2::ylab(plot2)$label, ggplot2::ylab(test_data_scatter)$label)
+  expect_equal(ggplot2::ggtitle(plot2)$label, ggplot2::ggtitle(test_data_scatter)$label)
+  #expect_equal(ggplot2::type(plot2), type=="knn")
+})
+
 #test type output of scatter_plot
 testthat::test_that("Function has the right type", {
   expect_type(helper_scatter_empty_type,'list')
