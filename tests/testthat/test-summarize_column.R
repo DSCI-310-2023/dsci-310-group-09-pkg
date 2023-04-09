@@ -60,3 +60,4 @@ testthat::test_that("summarize_column returns error when input is not df or df e
   expect_error(summarize_column(mtcars, rgd))
   expect_error(summarize_column(mtcars, uih))
 })
+
