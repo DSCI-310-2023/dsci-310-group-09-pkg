@@ -20,7 +20,7 @@
 #'   The y-axis are for the y variable specified
 #'
 #' @examples
-#' scatter_plot(mtcars, hp, mpg, "Miles Per Gallon", "Horse Power",
+#' scatter_plot(mtcars, mpg, hp, "Miles Per Gallon", "Horse Power",
 #' "Scatter Plot for MPG vs HP", 10, "lm")
 #'
 #' @export
@@ -82,6 +82,7 @@ scatter_plot <- function(data,var1,var2,xlab,ylab,title,text_size,type=NULL){
   }
 
   else if(type == "knn") {
+    .pred <- NULL
     return(
       ggplot2::ggplot(data, ggplot2::aes(x=x,y=y)) +
         ggplot2::geom_point()+
