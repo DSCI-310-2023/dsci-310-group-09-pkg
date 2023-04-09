@@ -9,14 +9,29 @@
 <!-- badges: end -->
 
 The goal of `ln.knn.regression` is to assist in creating a regression
-analysis project from start to finish. It includes functions that help
-to explore, summarize and visualize the data. It also includes functions
-that directly build and visualize linear and k-nn models. Additionally,
-it contains functions that can test the model’s error and accuracy.
+analysis project from start to finish. It includes **R** functions that
+help to explore, summarize and visualize the data. It also includes
+functions that directly build and visualize linear and k-nn models.
+Additionally, it contains functions that can test the model’s error and
+accuracy.
+
+`ln.knn.regression` is similar to
+[`tidymodels`](https://www.tidymodels.org/packages/) which is a
+collection of packages for modeling and machine learning using
+[`tidyverse`](https://www.tidyverse.org/) principles.
+`ln.knn.regression` imports many of the same packages that `tidymodels`
+and `tidyverse` use, such as [`dplyr`](https://dplyr.tidyverse.org/),
+[`ggplot2`](https://ggplot2.tidyverse.org/),
+[`parsnip`](https://parsnip.tidymodels.org/),
+[`rsample`](https://rsample.tidymodels.org/) and more. Like
+`tidymodels`, `ln.knn.regression` contains functions for building models
+and performing data analysis. However, `ln.knn.regression` is a smaller
+and more simple package that is used specifically for regression
+modeling and analysis.
 
 ## Installation
 
-You can install the development version of ln.knn.regression from
+You can install the development version of `ln.knn.regression` from
 [GitHub](https://github.com/) with:
 
 ``` r
@@ -31,15 +46,15 @@ devtools::install_github("DSCI-310/dsci-310-group-09-pkg")
 - `knn_model()`
 - `linearmodel()`
 - `model_rmspe()`
-- \`scatter_plot()
+- `scatter_plot()`
 - `summarize_column()`
 
 ## Example
 
-This is a basic example which shows you how to explore the data and
+Here is a basic example which shows you how to explore the data and
 build a linear regression model.
 
-### 1. EDA
+#### 1. EDA
 
 ``` r
 library(ln.knn.regression)
@@ -54,7 +69,7 @@ hist_plot(mtcars, mpg, "MPG", "Count", "Histogram for MPG of Cars", 10)
 
 <img src="man/figures/README-EDA-1.png" width="100%" />
 
-### 2. Model Building
+#### 2. Model Building
 
 ``` r
 mtcars_model <- linearmodel(recipes::recipe(mpg ~ hp, mtcars_training), mtcars_training)
@@ -76,7 +91,7 @@ mtcars_model
 #>    28.36292     -0.05863
 ```
 
-### 3. Visualizations
+#### 3. Visualizations
 
 ``` r
 scatter_plot(mtcars_training, 
@@ -92,7 +107,7 @@ scatter_plot(mtcars_training,
 
 <img src="man/figures/README-visualization-1.png" width="100%" />
 
-### 4. Finding model’s accuracy
+#### 4. Finding model’s accuracy
 
 ``` r
 mtcars_rmspe <- model_rmspe(mtcars_model, mtcars_testing, "mpg")
