@@ -19,12 +19,11 @@
 #' @export
 #'
 hist_plot <- function(data, var, xlab, ylab, title, text_size){
-  x = dplyr::pull(data, {{var}})
   if (!is.data.frame(data)){
     stop("Parameter data must be a dataframe")
   }
 
-  else if (!is.numeric(x)){
+  else if (!is.numeric(dplyr::pull(data, {{var}}))){
     stop("Variable x must be a numerical variable.")}
 
   else if(!is.character(xlab)){
@@ -44,6 +43,7 @@ hist_plot <- function(data, var, xlab, ylab, title, text_size){
   }
 
   else {
+    x = dplyr::pull(data, {{var}})
     return(
       ggplot2::ggplot(data, ggplot2::aes(x = x)) +
         ggplot2::geom_histogram() +

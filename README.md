@@ -118,6 +118,12 @@ mtcars_rmspe
 This tells us that the model has a prediction error of around 5 miles
 per gallon when tested on data it has not seen before.
 
+## Further Resources
+
+For a detailed tutorial on how to use each of the functions in
+`ln.knn.regression`, refer to our
+[Vignette](https://github.com/DSCI-310/dsci-310-group-09-pkg/blob/main/vignettes/ln_knn_regression-vignette.Rmd).
+
 ## Contributing
 
 We appreciate contributions to the `ln.knn.regression` package. Please

@@ -27,22 +27,20 @@
 #'
 
 scatter_plot <- function(data,var1,var2,xlab,ylab,title,text_size,type=NULL){
-  x = dplyr::pull(data, {{var1}})
-  y = dplyr::pull(data, {{var2}})
   if (!is.data.frame(data)){
     stop("Parameter data must be a dataframe.")
   }
 
-  else if(!is.numeric(x)){
+  else if(!is.numeric(dplyr::pull(data, {{var1}}))){
     stop("Please put in a numeric variable for x.")
   }
-  else if(!is.numeric(y)){
+  else if(!is.numeric(dplyr::pull(data, {{var2}}))){
     stop("Please put in a numeric variable for y.")
   }
   else if(!is.character(xlab)){
     stop("Please put in a string parameter for xlab.")
   }
-  else if(!is.character(xlab)){
+  else if(!is.character(ylab)){
     stop("Please put in a string parameter for ylab.")
   }
   else if(!is.character(title)){
@@ -52,6 +50,8 @@ scatter_plot <- function(data,var1,var2,xlab,ylab,title,text_size,type=NULL){
     stop("Parameter text_size must be a numeric value.")
   }
   else if(rlang::is_empty(type)){
+    x = dplyr::pull(data, {{var1}})
+    y = dplyr::pull(data, {{var2}})
     return (
       ggplot2::ggplot(data, ggplot2::aes(x=x,y=y)) +
         ggplot2::geom_point()+
@@ -70,6 +70,8 @@ scatter_plot <- function(data,var1,var2,xlab,ylab,title,text_size,type=NULL){
   }
 
   else if(type == "lm") {
+    x = dplyr::pull(data, {{var1}})
+    y = dplyr::pull(data, {{var2}})
     return(
       ggplot2::ggplot(data, ggplot2::aes(x=x,y=y)) +
         ggplot2::geom_point()+
@@ -81,8 +83,11 @@ scatter_plot <- function(data,var1,var2,xlab,ylab,title,text_size,type=NULL){
 
   }
 
-  else if(type == "knn") {
+  else {
+
     .pred <- NULL
+    x = dplyr::pull(data, {{var1}})
+    y = dplyr::pull(data, {{var2}})
     return(
       ggplot2::ggplot(data, ggplot2::aes(x=x,y=y)) +
         ggplot2::geom_point()+
@@ -92,17 +97,6 @@ scatter_plot <- function(data,var1,var2,xlab,ylab,title,text_size,type=NULL){
         ggplot2::geom_line(data,
                            mapping = ggplot2::aes(x = x, y = .pred),
                            color = "blue")
-    )
-
-  }
-
-  else {
-    return (
-      ggplot2::ggplot(data, ggplot2::aes(x=x,y=y)) +
-        ggplot2::geom_point()+
-        ggplot2::labs(x=xlab,y=ylab)+
-        ggplot2::ggtitle(title)+
-        ggplot2::theme(text=ggplot2::element_text(size=text_size))
     )
   }
 }
