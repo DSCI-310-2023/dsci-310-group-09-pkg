@@ -7,6 +7,14 @@ test_testing1 <- rsample::testing(test_split1)
 test_model1 <- linearmodel(recipes::recipe(mpg ~ hp + wt, test_training1), test_training1)
 var1 <- "mpg"
 
+test_rmspe <- test_model1 |>
+  stats::predict(test_testing1) |>
+  dplyr::bind_cols(test_testing1) |>
+  yardstick::metrics(truth = mpg, estimate = .pred) |>
+  dplyr::filter(.metric == "rmse") |>
+  dplyr::select(.estimate) |>
+  dplyr::pull()
+
 #test input data
 
 testthat::test_that("Function can only accept a list for the model parameter", {
@@ -35,4 +43,5 @@ testthat::test_that("Function can only accept a string for var parameter", {
 testthat::test_that("Checks that the output is numeric", {
   rmspe1 <- model_rmspe(test_model1, test_training1, var1)
   testthat::expect_true(is.numeric(rmspe1))
+  testthat::expect_equal(model_rmspe(test_model1, test_testing1, var1), test_rmspe)
 })

@@ -18,12 +18,12 @@ expected_bar_graph
 #test for input variables
 testthat::test_that("Function can only accept certain data types for arguments", {
     expect_error(bar_graph(c(1,0,0), c(2,1), c(1,2), "x", "y", "x", "title"))
-    expect_error(bar_graph(test_data, y, y, "x", "y", "x", "title"))
-    expect_error(bar_graph(test_data, x, x, "x", "y", "x", "title"))
-    expect_error(bar_graph(test_data, x, y, 100, "y", "x","title"))
-    expect_error(bar_graph(test_data, x, y, "x", 100, "x","title"))
-    expect_error(bar_graph(test_data, x, y, "x", "y", 100,"title"))
-    expect_error(bar_graph(test_data, x, y, "x", "y", "x",100))
+    expect_error(bar_graph(test_data, test_data$y, test_data$y, "x", "y", "x", "title"))
+    expect_error(bar_graph(test_data, test_data$x, test_data$x, "x", "y", "x", "title"))
+    expect_error(bar_graph(test_data, test_data$x, test_data$y, 100, "y", "x","title"))
+    expect_error(bar_graph(test_data, test_data$x, test_data$y, "x", 100, "x","title"))
+    expect_error(bar_graph(test_data, test_data$x, test_data$y, "x", "y", 100,"title"))
+    expect_error(bar_graph(test_data, test_data$x, test_data$y, "x", "y", "x",100))
 })
 
 #test for output variables
