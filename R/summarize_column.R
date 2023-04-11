@@ -9,7 +9,7 @@
 #' if input is an empty df, then return an empty df
 #'
 #' @examples
-#' # summarize_column(mtcars, mpg)
+#' # summarize_column(mtcars, mtcars$mpg)
 #'
 #' @export
 #'
