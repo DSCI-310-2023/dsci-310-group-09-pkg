@@ -2,10 +2,14 @@ Package: ln.knn.regression
 Title: Build a Linear and KNN Regression Model 
 Version: 0.0.0.9000
 Authors@R: 
-    person("Vera", "Danilova", , "veradanilova765@gmail.com", role = c("aut", "cre"))
-    person("Yuyang", "Wang", , "franktcsn@gmail.com", role = c("aut", "cre"))
-    person("Jenna", "Le Noble", , "jenna_lenoble@hotmail.com", role = c("aut", "cre"))
-    person("Moira", "Renata", , "moirarenata.s@gmail.com", role = c("aut", "cre"))
+    c(person("Jenna", "Le Noble", email = "jenna_lenoble@hotmail.com", 
+           role = c("aut", "cre")), 
+    person("Vera", "Danilova", email = "veradanilova765@gmail.com", 
+           role = c("aut")),
+    person("Yuyang", "Wang", email = "franktcsn@gmail.com", 
+           role = c("aut")),
+    person("Moira", "Renata", email = "moirarenata.s@gmail.com", 
+           role = c("aut")))
 Description: This package contains functions that will help when you are building either a linear or KNN 
              regression model. You will be able to perform exploratory data analysis by creating summary tables and 
              visualizations like bar graph, histograms, and scatterplots. Additionally, you will be able to check the   
