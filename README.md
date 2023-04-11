@@ -126,7 +126,7 @@ For a detailed tutorial on how to use each of the functions in
 
 To view an example of when this package was used for an analysis, please
 view this
-[repository](https://github.com/jennalenoble/dsci-310-group-09)
+[repository](https://github.com/jennalenoble/dsci-310-group-09).
 
 ## Contributing
 
