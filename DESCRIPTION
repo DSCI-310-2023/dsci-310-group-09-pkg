@@ -27,11 +27,11 @@ Imports:
     rsample,
     tune,
     yardstick,
-    rlang,
-    kknn
+    rlang
 Suggests: 
     knitr,
     rmarkdown,
+    kknn,
     recipes,
     devtools,
     testthat (>= 3.0.0),
