@@ -124,6 +124,10 @@ For a detailed tutorial on how to use each of the functions in
 `ln.knn.regression`, refer to our
 [Vignette](https://github.com/DSCI-310/dsci-310-group-09-pkg/blob/main/vignettes/ln_knn_regression-vignette.Rmd).
 
+To view an example of when this package was used for an analysis, please
+view this
+[repository](https://github.com/jennalenoble/dsci-310-group-09)
+
 ## Contributing
 
 We appreciate contributions to the `ln.knn.regression` package. Please
